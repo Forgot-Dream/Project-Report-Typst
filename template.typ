@@ -1,3 +1,7 @@
+#let 字体 = (
+  思源黑体: ("Times New Roman","Source Han Sans")
+)
+
 #let buildMainHeader(mainHeadingContent) = {
   [
     #align(center, smallcaps(mainHeadingContent)) 
@@ -64,6 +68,7 @@
   degree: "Bachelor of Technology",
   stream: "Information Technology",
   guide: (),
+  time: "",
   body
   ) = {
   // Set the document's basic properties.
@@ -79,28 +84,29 @@
       right: 1in
     )
   )
-  set text(font: "New Computer Modern", lang: "en")
+  // set text(font: "New Computer Modern", lang: "en")
+  set text(font: 字体.思源黑体, lang: "cn")
 
   set par(justify: true)
   // Title row.
   v(.10fr)
   align(center)[
     #text(12pt, strong(smallcaps(subject)))
-    \ #text(12pt, strong(smallcaps("Project Report")))
+    // \ #text(12pt, strong(smallcaps("Project Report")))
     \ \ #text(30pt, weight: 900, smallcaps(title))
     \ #text(14pt, weight: 200, subtitle)
-    \ \ #emph(text(12pt, weight: 200, "Submitted in fullfillment of"))
-    \ #emph(text(12pt, weight: 200, "he requirements for the paper"))
+    // \ \ #emph(text(12pt, weight: 200, "Submitted in fullfillment of"))
+    // \ #emph(text(12pt, weight: 200, "he requirements for the paper"))
     \ #emph(text(12pt, weight: 200, subject))
   ]
 
   // Degree Part
   align(center)[
-    #text(12pt, strong(degree))
-    \ #text(12pt, strong("in"))
-    \ #text(12pt, strong(stream))
-    #v(1cm)
-    #text(12pt, strong("Submitted By,"))
+    // #text(12pt, strong(degree))
+    // \ #text(12pt, strong("in"))
+    // \ #text(12pt, strong(stream))
+    // #v(1cm)
+    #text(12pt, strong("由以下成员合作完成,"))
   ]
   
   pad(
@@ -134,14 +140,17 @@
       }
     }
   )
-  v(1cm)
-  align(center)[
-    #text(12pt, "Under the guidance of,")
-    \ #text(14pt, smallcaps(strong(guide.name)))
-    \ #text(12pt, smallcaps(guide.designation+","))
-    \ #text(12pt, smallcaps(guide.department))
-  ]
-  
+
+  if guide != none and guide != (){
+    v(1cm)
+    align(center)[
+      #text(12pt, "Under the guidance of,")
+      \ #text(14pt, smallcaps(strong(guide.name)))
+      \ #text(12pt, smallcaps(guide.designation+","))
+      \ #text(12pt, smallcaps(guide.department))
+    ]
+  }
+
   v(0.75fr)
   if logo != none {
     align(center)[
@@ -157,6 +166,11 @@
       \ #text(address)
     ]
   }
+
+  align(center)[
+    #text(12pt, strong(time))
+  ]
+
   set page(margin: (
     top: 1in,
     bottom: 1in,
@@ -173,7 +187,8 @@
   }
   
   pagebreak()
-  outline(depth: 3, indent: true)
+  outline(title:[#text(24pt,"目录")]
+  ,depth: 3, indent: true)
 
   // Formatting the headings
   // General First and then specific headings

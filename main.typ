@@ -3,49 +3,42 @@
 // Take a look at the file `template.typ` in the file panel
 // to customize this template and discover how it works.
 #show: project.with(
-  title: "Sample Project Report",
-  subtitle: "A sample project on this & that",
-  abstract: lorem(50),
-  subject: "PROJ-CS881 PROJECT - III",
-  guide: (
-    name: "Mr. Aurghyadip Kundu",
-    designation: "Assistant Professor",
-    department: "Information Technology"),
+  title: "样例报告",
+  subtitle: "一个测试项目",
+  // abstract: lorem(50),
+  subject: "计算机网络",
+  // guide: (
+  //   name: "Mr. Aurghyadip Kundu",
+  //   designation: "Assistant Professor",
+  //   department: "Information Technology"),
   authors: (
-    (name: "Jane Doe", 
+    (name: "张三", 
     department: "Computer Science",
-    rollno: "123456789",
-    regno: "1000000010 of 2021-22"),
-    (name: "John Doe", 
+    rollno: "123456789",),
+    (name: "李四",
     department: "Computer Science",
-    rollno: "123456789",
-    regno: "1000000010 of 2021-22"),
-    (name: "Jason Doe",
+    rollno: "987654321",),
+    (name: "王五",
     department: "Computer Science",
-    rollno: "123456789",
-    regno: "1000000010 of 2021-22"),
-    (name: "Jimmy Doe",
+    rollno: "123456789",),
+    (name: "赵六",
     department: "Computer Science",
-    rollno: "123456789",
-    regno: "1000000010 of 2021-22"),
-    (name: "Timmy Doe",
-    department: "Computer Science",
-    rollno: "123456789",
-    regno: "1000000010 of 2021-22"),
+    rollno: "987654321",),
   ),
-  department: "Department of Information Technology",
-  institute: "Calcutta Institute of Engineering and Management",
-  address: "24/1A Chandi Ghosh Road, Kolkata - 700040"
+  time: "2024年4月1号",
+  // department: "Department of Information Technology",
+  // institute: "Calcutta Institute of Engineering and Management",
+  // address: "24/1A Chandi Ghosh Road, Kolkata - 700040"
 )
 
 // We generated the example code below so you can see how
 // your document will look. Go ahead and replace it with
 // your own content!
 
-= Introduction
+= 介绍
 #lorem(60)
 
-== In this paper
+== 介绍 Level2
 #lorem(320)
 
 == Contributions
