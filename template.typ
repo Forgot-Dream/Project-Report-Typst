@@ -1,5 +1,6 @@
 #let 字体 = (
-  思源黑体: ("Times New Roman","Source Han Sans")
+  思源黑体: ("Times New Roman","Source Han Sans"),
+  宋体: ("Times New Roman","SimSun")
 )
 
 #let buildMainHeader(mainHeadingContent) = {
@@ -69,6 +70,7 @@
   stream: "Information Technology",
   guide: (),
   time: "",
+  header: "XX University",
   body
   ) = {
   // Set the document's basic properties.
@@ -77,6 +79,7 @@
     title: title)
   set page(
     paper: "a4",
+    header: align(right,underline(smallcaps(text(12pt,header,font: "New Computer Modern")),offset: 2pt)),
     margin: (
       top: 1in,
       bottom: 1in,
@@ -84,7 +87,7 @@
       right: 1in
     )
   )
-  // set text(font: "New Computer Modern", lang: "en")
+  
   set text(font: 字体.思源黑体, lang: "cn")
 
   set par(justify: true)
@@ -94,10 +97,11 @@
     #text(12pt, strong(smallcaps(subject)))
     // \ #text(12pt, strong(smallcaps("Project Report")))
     \ \ #text(30pt, weight: 900, smallcaps(title))
+    \
     \ #text(14pt, weight: 200, subtitle)
     // \ \ #emph(text(12pt, weight: 200, "Submitted in fullfillment of"))
     // \ #emph(text(12pt, weight: 200, "he requirements for the paper"))
-    \ #emph(text(12pt, weight: 200, subject))
+    // \ #emph(text(12pt, weight: 200, subject))
   ]
 
   // Degree Part
@@ -180,60 +184,65 @@
   if abstract != none {
     pagebreak()
     align(right)[
-      #text(34pt, underline(smallcaps(strong("Abstract"))))
+      #text(34pt, underline(smallcaps(strong("Abstract"))), offset: 4pt)
     ]
     set par(justify: true)
     abstract
   }
   
   pagebreak()
-  outline(title:[#text(24pt,"目录")]
-  ,depth: 3, indent: true)
+  set page(header: none)
+  outline(title:[#text(24pt,"目录")],depth: 3, indent: true)
+
 
   // Formatting the headings
   // General First and then specific headings
   show heading: it => [
     #set align(left)
     #set text(14pt)
-    #block(smallcaps(it.body))
+    #block(it.body)
   ]
   
   show heading.where(level: 1): it => [
     #pagebreak(weak: true)
     #set align(right)
     #set text(34pt)
-    #underline(extent: 2pt)[
-      #block(smallcaps(it.body))
+    #underline(extent: 2pt,stroke: 2pt,offset: 5pt)[
+      #block(it.body)
       #v(3em)
     ]
   ]
 
   show heading.where(level:2): it => [
-    #set text(24pt)
-    #block(counter(heading).display() + " " + smallcaps(it.body))
+    #set text(20pt)
+    #block(counter(heading).display() + " " + it.body)
   ]
 
   show heading.where(level:3): it => [
-    #set text(20pt)
-    #block(counter(heading).display() + " " + smallcaps(it.body))
+    #set text(16pt)
+    #block(counter(heading).display() + " " + it.body)
   ]
 
   show heading.where(level:4): it => [
-    #set text(16pt)
-    #block(smallcaps(it.body))
-  ]
-
-  show heading.where(level:5): it => [
     #set text(14pt)
     #block(smallcaps(it.body))
   ]
 
+  show heading.where(level:5): it => [
+    #set text(12pt)
+    #block(smallcaps(it.body))
+  ]
+
   // Main body.
+
+  set text(font: 字体.宋体)
+  
   set par(justify: true)
   set heading(numbering: "1.1")
   counter(page).update(1)
   set page(header: getHeader())
   set page(numbering: "1", number-align: center)
+  
   body
 }
 
