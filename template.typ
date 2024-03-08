@@ -234,15 +234,21 @@
   ]
 
   // Main body.
-
   set text(font: 字体.宋体)
+
+  // show heading: it => {it;text()[#v(0.3em, weak: true)];text()[#h(0em)]} // Add space after heading
   
   set par(justify: true)
   set heading(numbering: "1.1")
   counter(page).update(1)
+
   set page(header: getHeader())
   set page(numbering: "1", number-align: center)
-  
+
+  //set rect
+  set rect(fill:rgb(240,248,255),stroke: (left:stroke(thickness: 0.3em,paint:rgb(blue))),radius: 2pt)
+  show rect: set text(font: 字体.思源黑体, lang: "cn",weight: "light")
+
   body
 }
 

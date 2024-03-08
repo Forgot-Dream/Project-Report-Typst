@@ -36,10 +36,17 @@
 // your own content!
 
 = 介绍
-#lorem(60)
+
+== Changelogs
+
+2024.3.8 更改了 *\#\r\e\c\t*的样式，参见下图。Changed the style of *\#\r\e\c\t* as shown in the figure below.
+
+#rect[
+  #lorem(10)
+]
 
 == 介绍 Level2
-#lorem(320)
+#lorem(40)
 
 == Contributions
 #lorem(40)
